@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "illuminate/config": "5.3.*",
+        "illuminate/config": "5.4.*",
         "pimple/pimple": "~3.0"
     },
     "autoload": {
