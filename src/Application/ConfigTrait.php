@@ -1,10 +1,10 @@
 <?php
 
-namespace NunoPress\Silex\Application;
+namespace NunoPress\Config\Application;
 
 /**
  * Class ConfigTrait
- * @package NunoPress\Silex\Application
+ * @package NunoPress\Config\Application
  */
 trait ConfigTrait
 {

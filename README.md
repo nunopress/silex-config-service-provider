@@ -1,6 +1,6 @@
 # Config Service Provider
 
-The Config Service Provider with [Illuminate Config](https://github.com/illuminate/config) package for [Silex Microframework](http://silex.sensiolabs.org/) or every [Pimple Container](http://pimple.sensiolabs.org/) project's.
+Config Service Provider based on [Illuminate Config](https://github.com/illuminate/config) package for [Silex Microframework](http://silex.sensiolabs.org/) or any [Pimple Container](http://pimple.sensiolabs.org/) project's.
 
 ### Parameters
 
@@ -84,7 +84,7 @@ The `Illuminate\Config\Repository` instance. The main way to interact with Confi
 ### Registering
 
 ```php
-$app->register(new NunoPress\Silex\Provider\ConfigServiceProvider(), [
+$app->register(new NunoPress\Config\Provider\ConfigServiceProvider(), [
     'config.path' => __DIR__ . '/config',
     'config.environment' => ($app['debug']) ? 'dev' : 'prod'
 ]);
@@ -106,7 +106,7 @@ $app->get('/hello', function () use ($app) {
 
 ### Traits
 
-`NunoPress\Silex\Application\ConfigTrait` adds the following shortcuts:
+`NunoPress\Config\Application\ConfigTrait` adds the following shortcuts:
 
 #### config
 
@@ -121,7 +121,7 @@ Define this trait in your `Application` class:
 ```php
 class App extends \Silex\Application
 {
-    use \NunoPress\Silex\Application\ConfigTrait;
+    use \NunoPress\Config\Application\ConfigTrait;
 }
 
 $app = new App();

@@ -1,6 +1,6 @@
 <?php
 
-namespace NunoPress\Silex\Provider;
+namespace NunoPress\Config\Provider;
 
 use Illuminate\Config\Repository;
 use Pimple\Container;
@@ -9,7 +9,7 @@ use Symfony\Component\Finder\Finder;
 
 /**
  * Class ConfigServiceProvider
- * @package NunoPress\Silex\Provider
+ * @package NunoPress\Config\Provider
  */
 class ConfigServiceProvider implements ServiceProviderInterface
 {
@@ -46,12 +46,10 @@ class ConfigServiceProvider implements ServiceProviderInterface
         $values = [];
 
         foreach ($this->getConfigurationFiles($app['config.path']) as $fileKey => $filePath) {
-            //$values[$fileKey] = array_replace_recursive((array) @$values[$fileKey], require $filePath);
             $values[$fileKey] = $app['config.merge_factory']((array) @$values[$fileKey], require $filePath);
         }
 
         foreach ($this->getConfigurationFiles($app['config.path'], $app['config.environment']) as $fileKey => $filePath) {
-            //$values[$fileKey] = array_replace_recursive((array) @$values[$fileKey], require $filePath);
             $values[$fileKey] = $app['config.merge_factory']((array) @$values[$fileKey], require $filePath);
         }
 
@@ -65,15 +63,16 @@ class ConfigServiceProvider implements ServiceProviderInterface
      */
     protected function getConfigurationFiles($path, $environment = null)
     {
-        if ($environment) {
+        if (null !== $environment) {
             $path .= DIRECTORY_SEPARATOR . $environment;
         }
 
-        if (!is_dir($path)) {
+        if (false === is_dir($path)) {
             return [];
         }
 
         $files = [];
+
         $phpFiles = Finder::create()->files()->name('*.php')->in($path)->depth(0);
 
         foreach ($phpFiles as $file) {

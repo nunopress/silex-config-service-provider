@@ -1,6 +1,6 @@
 {
     "name": "nunopress/config-service-provider",
-    "description": "The Config Service Provider with Illuminate Config package for Silex Microframework or every Pimple Container project's.",
+    "description": "Config Service Provider based on Illuminate Config package for Silex Microframework or any Pimple Container project's.",
     "license": "MIT",
     "homepage": "http://nunopress.com",
     "support": {
@@ -19,13 +19,12 @@
     },
     "autoload": {
         "psr-4": {
-            "NunoPress\\Silex\\": "src"
+            "NunoPress\\Config\\": "src"
         }
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.1-dev"
+            "dev-master": "1.2-dev"
         }
-    },
-    "minimum-stability": "dev"
+    }
 }
