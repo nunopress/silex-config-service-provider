@@ -1,0 +1,4 @@
+copyright: 2016 NunoPress LLC
+
+markdown_extensions:
+  - admonition
