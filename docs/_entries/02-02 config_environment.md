@@ -1,6 +1,7 @@
 ---
 title: config.environment
 section-id: config-environment
+section-class: h2
 ---
 
 Search before in the defined path and then in the environment path (`config.path/config.environment` format). The service use `array_replace_recursive` for help the developers to change only what you need in the different environment instead to write again all the configuration set.

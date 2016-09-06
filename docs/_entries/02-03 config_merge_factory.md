@@ -1,6 +1,7 @@
 ---
 title: config.merge_factory
 section-id: config-merge_factory
+section-class: h2
 ---
 
 You can configure your merge method instead to use the default merge factory `array_replace_recursive`:
