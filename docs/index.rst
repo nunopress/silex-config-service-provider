@@ -18,7 +18,6 @@ Here a simple example:
 
 ```php
 // config/view.php
-
 return [
     'twig' => [
         'path' => realpath(__DIR__ . '/../views'),
@@ -30,7 +29,6 @@ return [
 ];
 
 // config/development/view.php
-
 return [
     'twig' => [
         'options' => [
@@ -41,7 +39,6 @@ return [
 ];
 
 // RESULT
-
 [
     'twig' => [
         'path' => realpath(__DIR__ . '/../views'),
@@ -76,7 +73,6 @@ return [
 ];
 
 // Access to test key
-
 $app['config']->get('view.test'); // Result: yep
 ```
 
