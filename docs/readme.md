@@ -1,57 +1,19 @@
-# Aviator
+# Docster
+![docster preview](https://raw.githubusercontent.com/DigitalMindCH/docster-jekyll-theme/gh-pages/img/docster_preview.jpg)
 
-API documentation template for Jekyll. Browse through a [live demo](#TODO).
-Start documenting your API with this configurable theme.
-
-![Aviator template screenshot](images/_screenshot.png)
-
-Aviator was made by [CloudCannon](http://cloudcannon.com/), the Cloud CMS for Jekyll.
-Find more templates and themes at [Jekyll Tips](http://jekyll.tips/templates/).
-
-Learn Jekyll with step-by-step tutorials and videos at [Jekyll Tips](http://jekyll.tips/).
+## simple and easy
+That's how we would describe working with docster.
+We first created it, when we needed an index file for a theme documentation. jekyll offered collections which made the organization into smaller chunks of documentation optimal. Especially because the collections did not generate outputs for themselves.
+This theme was created to generate an organized output. It does not require any plugins, which means you can host on GitHub without much effort.
 
 ## Features
+* Nice syntax highlighting
+* dynamic multi-level navigation
+* Sass stylesheets
 
-* Three column layout
-* Fully responsive 
-* Full text search
-* Pre-styled components
-* Auto-generated navigation based on category
-* Optimised for editing in [CloudCannon](http://cloudcannon.com/)
-* SEO tags
-* Google Analytics
+### Documentation
+We don't believe in delivering Code without explanation. Especially not for a documentation theme. So the [Demo](http://digitalmind.ch/themes/docster-jekyll-theme/demo/) doubles as the documentation for Docster, that should help you set up your own docs without any problems.
 
-## Setup
-
-1. Add your site and author details in `_config.yml`.
-2. Get a workflow going to see your site's output (with [CloudCannon](https://app.cloudcannon.com/) or Jekyll locally).
-
-## Develop
-
-Aviator was built with [Jekyll](http://jekyllrb.com/) version 3.1.6, but should support newer versions as well.
-
-Install the dependencies with [Bundler](http://bundler.io/):
-
-~~~bash
-$ bundle install
-~~~
-
-Run `jekyll` commands through Bundler to ensure you're using the right versions:
-
-~~~bash
-$ bundle exec jekyll serve
-~~~
-
-## Editing
-
-Aviator is already optimised for adding, updating and removing documentation pages in CloudCannon.
-
-### Usage
-
-* Each section is a different collection, this helps organise your content.
-* Set the order of the collections with the position field in collection configuration in `_config.yml`.
-* Set the order of the documents inside a collection by setting the position in front matter.
-
-### Search
-
-* Add `excluded_in_search: true` to any documentation page's front matter to exclude that page in the search results.
+### Feedback, Wishes, Problems
+If you run into any trouble or have a request please do so by opening up an issue on the theme's GitHub page.
+If you just want to give us a general feedback feel free to [contact us!](http://digitalmind.ch/contact/)

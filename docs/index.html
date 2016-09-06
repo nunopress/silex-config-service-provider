@@ -1,32 +1,24 @@
 ---
-title: API Docs
+layout: index
+title: index
 ---
-{% assign sorted_collections = site.collections | sort: "position" %}
-{% for collection in sorted_collections %}
-	{% assign sorted_docs = collection.docs | sort: "position" %}
-	{% for doc in sorted_docs %}
-		<section class="doc-content">
-			<section class="left-docs">
-				<h3>
-					<a id="{{ doc.id | replace: '/', '' | replace: '.', '' }}">
-						{{ doc.title }}
-						{% if doc.type %}
-							<span class="endpoint {{ doc.type }}"></span>
-						{% endif %}
-					</a>
-				</h3>
-				{% if doc.description %}
-					<p class="description">{{doc.description}}</p>
-				{% endif %}
 
-				{{ doc.content | replace: "<dl>", "<h6>Parameters</h6><dl>" }}
-			</section>
+{% assign entries = site.entries | sort: "number" %}
+{% for entry in entries %}
+    {% if entry.title != 'index'%}
+        <section id="{{ entry.section-id }}" class="{{ entry.section-class }}">
+            {% case entry.section-class %}
+                {% when 'h1' %}
+                    <h1>{{ entry.title }}</h1>
+                {% when 'h2' %}
+                    <h2>{{ entry.title }}</h2>
+                {% when 'h3' %}
+                    <h3>{{ entry.title }}</h3>
+                {% when 'h4' %}
+                    <h4>{{ entry.title }}</h4>
+            {% endcase %}
 
-			{% if doc.right_code %}
-				<section class="right-code">
-					{{ doc.right_code | markdownify }}
-				</section>
-			{% endif %}
-		</section>
-	{% endfor %}
+            {{ entry.content }}
+        </section>
+    {% endif %}
 {% endfor %}
