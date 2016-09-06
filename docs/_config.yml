@@ -24,7 +24,7 @@ exclude:
 defaults:
   -
     scope:
-      path: ""
+      path: "config-service-provider/"
     values:
       layout: default
 
