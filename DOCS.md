@@ -1,8 +1,10 @@
-# Config Service Provider
+Config Service Provider
+-----------------------
 
 Config Service Provider based on [Illuminate Config](https://github.com/illuminate/config) package for [Silex Microframework](http://silex.sensiolabs.org/) or any [Pimple Container](http://pimple.sensiolabs.org/) project's.
 
-### Parameters
+Parameters
+==========
 
 #### config.path
 
@@ -61,7 +63,8 @@ $app['config.merge_factory'] = $app->share($app->protect('config.merge_factory',
 }));
 ```
 
-### Services
+Services
+========
 
 For access to config keys you need to use the `filename` (_without extension_) before every config keys, example:
 
@@ -81,7 +84,8 @@ $app['config']->get('view.test'); // Result: yep
 
 The `Illuminate\Config\Repository` instance. The main way to interact with Config.
 
-### Registering
+Registering
+===========
 
 ```php
 $app->register(new NunoPress\Config\Provider\ConfigServiceProvider(), [
@@ -90,11 +94,12 @@ $app->register(new NunoPress\Config\Provider\ConfigServiceProvider(), [
 ]);
 ```
 
-### Usage
+Usage
+=====
 
 The Config provider provides a `config` service:
 
-```
+```php
 $app->get('/hello', function () use ($app) {
     $name = $app['config']->get('app.name', 'NunoPress');
     
@@ -104,7 +109,8 @@ $app->get('/hello', function () use ($app) {
 
 > Read the Config [reference](https://laravel.com/api/master/Illuminate/Config/Repository.html) for the Illuminate Config document to learn more about the various Config functions.
 
-### Traits
+Traits
+======
 
 `NunoPress\Config\Application\ConfigTrait` adds the following shortcuts:
 
@@ -129,7 +135,8 @@ $app = new App();
 $name = $app->config('app.name', 'NunoPress');
 ```
 
-### Customization
+Customization
+=============
 
 You can configure the Config object before using it by extending the `config` service:
 
