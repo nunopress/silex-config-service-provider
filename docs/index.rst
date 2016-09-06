@@ -16,9 +16,7 @@ config.environment (optional)
 
 Search before in the defined path and then in the environment path (``config.path/config.environment`` format). The service use ``array_replace_recursive`` for help the developers to change only what you need in the different environment instead to write again all the configuration set.
 
-Here a simple example:
-
-::
+Here a simple example::
 
     // config/view.php
     return [
@@ -55,21 +53,16 @@ Here a simple example:
 config.merge_factory (optional)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can configure your merge method instead to use the default merge factory ``array_replace_recursive``:
-
-::
+You can configure your merge method instead to use the default merge factory ``array_replace_recursive``::
 
     $app['config.merge_factory'] = $app->share($app->protect('config.merge_factory', function (array $old, array $new) {
         return array_merge($old, $new);
     }));
 
-
 Services
 --------
 
-For access to config keys you need to use the ``filename`` (*without extension*) before every config keys, example:
-
-::
+For access to config keys you need to use the ``filename`` (*without extension*) before every config keys, example::
 
     // config/view.php
 
@@ -79,7 +72,6 @@ For access to config keys you need to use the ``filename`` (*without extension*)
 
     // Access to test key
     $app['config']->get('view.test'); // Result: yep
-
 
 config
 ~~~~~~
@@ -96,7 +88,6 @@ Registering
         'config.environment' => ($app['debug']) ? 'dev' : 'prod'
     ]);
 
-
 Usage
 -----
 
@@ -110,28 +101,22 @@ The Config provider provides a ``config`` service:
         return 'Hello ' . $name . '!!';
     });
 
-
 .. note::
     Read the Config `reference <https://laravel.com/api/master/Illuminate/Config/Repository.html>`_ for the Illuminate Config document to learn more about the various Config functions.
 
 Traits
 ------
 
-``NunoPress\Config\Application\ConfigTrait`` adds the following shortcuts:
+:php:class:`NunoPress\Config\Application\ConfigTrait` adds the following shortcuts:
 
 config
 ~~~~~~
 
-Access to Config object for retrieve the ``key`` requested, for the second param you can define a default value.
-
-::
+Access to Config object for retrieve the ``key`` requested, for the second param you can define a default value.::
 
     $name = $app->config('app.name', 'NunoPress');
 
-
-Define this trait in your ``Application`` class:
-
-::
+Define this trait in your ``Application`` class::
 
     class App extends \Silex\Application
     {
@@ -141,7 +126,6 @@ Define this trait in your ``Application`` class:
     $app = new App();
 
     $name = $app->config('app.name', 'NunoPress');
-
 
 Customization
 -------------
@@ -160,3 +144,4 @@ You can configure the Config object before using it by extending the ``config`` 
 
         return $config;
     }));
+
