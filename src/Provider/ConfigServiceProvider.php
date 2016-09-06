@@ -1,6 +1,6 @@
 <?php
 
-namespace NunoPress\Config\Provider;
+namespace NunoPress\Pimple\Config\Provider;
 
 use Illuminate\Config\Repository;
 use Pimple\Container;
@@ -9,7 +9,7 @@ use Symfony\Component\Finder\Finder;
 
 /**
  * Class ConfigServiceProvider
- * @package NunoPress\Config\Provider
+ * @package NunoPress\Pimple\Config\Provider
  */
 class ConfigServiceProvider implements ServiceProviderInterface
 {
@@ -35,12 +35,12 @@ class ConfigServiceProvider implements ServiceProviderInterface
     /**
      * @param Container $app
      * @return array
+     * @throws \Exception
      */
     protected function loadConfigurationFiles(Container $app)
     {
     	if (null === $app['config.path'] or false === is_dir($app['config.path'])) {
     		throw new \Exception("config.path is not defined or the path is invalid");
-    		
     	}
 
         $values = [];

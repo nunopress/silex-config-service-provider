@@ -1,10 +1,10 @@
 <?php
 
-namespace NunoPress\Config\Application;
+namespace NunoPress\Pimple\Config\Application;
 
 /**
  * Class ConfigTrait
- * @package NunoPress\Config\Application
+ * @package NunoPress\Pimple\Config\Application
  */
 trait ConfigTrait
 {
