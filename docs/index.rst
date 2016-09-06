@@ -1,16 +1,18 @@
 Config Service Provider
 =======================
 
-Config Service Provider based on `Illuminate Config <https://github.com/illuminate/config>` package for `Silex Microframework <http://silex.sensiolabs.org/>` or any `Pimple Container <http://pimple.sensiolabs.org/>` project's.
+Config Service Provider based on `Illuminate Config <https://github.com/illuminate/config>`_ package for `Silex Microframework <http://silex.sensiolabs.org/>`_ or any `Pimple Container <http://pimple.sensiolabs.org/>`_ project's.
 
 Parameters
 ----------
 
-### config.path
+config.path
+~~~~~~~~~~~
 
 Path defined to find every php files inside for loading.
 
-### config.environment (optional)
+config.environment (optional)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Search before in the defined path and then in the environment path (``config.path/config.environment`` format). The service use ``array_replace_recursive`` for help the developers to change only what you need in the different environment instead to write again all the configuration set.
 
@@ -50,7 +52,8 @@ Here a simple example:
         ]
     ]
 
-### config.merge_factory (optional)
+config.merge_factory (optional)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You can configure your merge method instead to use the default merge factory ``array_replace_recursive``:
 
@@ -76,7 +79,8 @@ For access to config keys you need to use the ``filename`` (*without extension*)
     $app['config']->get('view.test'); // Result: yep
 
 
-### config
+config
+~~~~~~
 
 The ``Illuminate\Config\Repository`` instance. The main way to interact with Config.
 
@@ -103,14 +107,16 @@ The Config provider provides a ``config`` service:
     });
 
 
-> Read the Config `reference <https://laravel.com/api/master/Illuminate/Config/Repository.html>` for the Illuminate Config document to learn more about the various Config functions.
+.. note::
+    Read the Config `reference <https://laravel.com/api/master/Illuminate/Config/Repository.html>`_ for the Illuminate Config document to learn more about the various Config functions.
 
 Traits
 ------
 
 ``NunoPress\Config\Application\ConfigTrait`` adds the following shortcuts:
 
-### config
+config
+~~~~~~
 
 Access to Config object for retrieve the ``key`` requested, for the second param you can define a default value.
 
