@@ -6,11 +6,11 @@ Config Service Provider based on [Illuminate Config](https://github.com/illumina
 Parameters
 ==========
 
-#### config.path
+### config.path
 
 Path defined to find every php files inside for loading.
 
-#### config.environment (optional)
+### config.environment (optional)
 
 Search before in the defined path and then in the environment path (`config.path/config.environment` format). The service use `array_replace_recursive` for help the developers to change only what you need in the different environment instead to write again all the configuration set.
 
@@ -53,7 +53,7 @@ return [
 ]
 ```
 
-#### config.merge_factory (optional)
+### config.merge_factory (optional)
 
 You can configure your merge method instead to use the default merge factory `array_replace_recursive`:
 
@@ -80,7 +80,7 @@ return [
 $app['config']->get('view.test'); // Result: yep
 ```
 
-#### config
+### config
 
 The `Illuminate\Config\Repository` instance. The main way to interact with Config.
 
@@ -114,7 +114,7 @@ Traits
 
 `NunoPress\Config\Application\ConfigTrait` adds the following shortcuts:
 
-#### config
+### config
 
 Access to Config object for retrieve the `key` requested, for the second param you can define a default value.
 
