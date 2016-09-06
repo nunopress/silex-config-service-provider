@@ -4,7 +4,7 @@ Config Service Provider
 Config Service Provider based on [Illuminate Config](https://github.com/illuminate/config) package for [Silex Microframework](http://silex.sensiolabs.org/) or any [Pimple Container](http://pimple.sensiolabs.org/) project's.
 
 !!! tip
-    The Service Provider is installable with [Composer](http://www.getcomposer.com):
+    The Service Provider is installable with [Composer](https://getcomposer.org/):
     
     `composer require nunopress/config-service-provider`
 
