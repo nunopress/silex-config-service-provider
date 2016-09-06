@@ -1,3 +1,10 @@
+site_name: NunoPress Config Service Provider
+site_description: Config Service Provider based on Illuminate Config package for Silex Microframework or any Pimple Container project's.
+site_author: http://nunopress.com
+
+repo_name: Github
+repo_url: https://github.com/nunopress/config-service-provider
+
 copyright: 2016 NunoPress LLC
 
 markdown_extensions:
