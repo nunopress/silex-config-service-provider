@@ -6,7 +6,7 @@
 
 		<link rel="stylesheet" href="/css/style.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-		<script src="/js/main.js"></script>
+		<script src="js/main.js"></script>
 		{% seo %}
 
 		{% if jekyll.environment == 'production' %}
@@ -23,12 +23,12 @@
 	<body>
 		<header>
 			<h1>
-				<a href="/"><img src="/images/emblem.svg" width="40" height="40" alt="{{ site.title }} logo"></a>
+				<a href="/"><img src="images/emblem.svg" width="40" height="40" alt="{{ site.title }} logo"></a>
 				{{ site.title }}
 				<button type="button" class="open-nav" id="open-nav"></button>
 			</h1>
 
-			<form action="/search/" method="get">
+			<form action="search/" method="get">
 				<input type="text" name="q" id="search-input" placeholder="Search">
 				<input type="submit" value="Search" style="display: none;">
 			</form>
