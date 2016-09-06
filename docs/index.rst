@@ -18,8 +18,8 @@ Search before in the defined path and then in the environment path (``config.pat
 
 Here a simple example:
 
-.. code-block:: php
-    :linenos:
+::
+
     // config/view.php
     return [
         'twig' => [
@@ -57,7 +57,8 @@ config.merge_factory (optional)
 
 You can configure your merge method instead to use the default merge factory ``array_replace_recursive``:
 
-.. code-block:: php
+::
+
     $app['config.merge_factory'] = $app->share($app->protect('config.merge_factory', function (array $old, array $new) {
         return array_merge($old, $new);
     }));
@@ -68,7 +69,8 @@ Services
 
 For access to config keys you need to use the ``filename`` (*without extension*) before every config keys, example:
 
-.. code-block:: php
+::
+
     // config/view.php
 
     return [
@@ -87,7 +89,8 @@ The ``Illuminate\Config\Repository`` instance. The main way to interact with Con
 Registering
 -----------
 
-.. code-block:: php
+::
+
     $app->register(new NunoPress\Config\Provider\ConfigServiceProvider(), [
         'config.path' => __DIR__ . '/config',
         'config.environment' => ($app['debug']) ? 'dev' : 'prod'
@@ -99,7 +102,8 @@ Usage
 
 The Config provider provides a ``config`` service:
 
-.. code-block:: php
+::
+
     $app->get('/hello', function () use ($app) {
         $name = $app['config']->get('app.name', 'NunoPress');
 
@@ -120,13 +124,15 @@ config
 
 Access to Config object for retrieve the ``key`` requested, for the second param you can define a default value.
 
-.. code-block:: php
+::
+
     $name = $app->config('app.name', 'NunoPress');
 
 
 Define this trait in your ``Application`` class:
 
-.. code-block:: php
+::
+
     class App extends \Silex\Application
     {
         use \NunoPress\Config\Application\ConfigTrait;
@@ -142,7 +148,8 @@ Customization
 
 You can configure the Config object before using it by extending the ``config`` service:
 
-.. code-block:: php
+::
+
     $app['config'] = $app->share($app->extend('config', function ($config, $app) {
         // Instead to have separate the config items you can share it in the current container
         $items = $config->all();
