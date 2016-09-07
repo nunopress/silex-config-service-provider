@@ -5,9 +5,10 @@ Pimple Config Service Provider
 Pimple Config Service Provider based on `Illuminate Config <https://github.com/illuminate/config>`_ package for `Silex Microframework <http://silex.sensiolabs.org/>`_ or any `Pimple Container <http://pimple.sensiolabs.org/>`_ project's.
 
 .. tip::
-    The Service Provider is installable with `Composer <https://getcomposer.org/>`_::
+
+  The Service Provider is installable with `Composer <https://getcomposer.org/>`_::
         
-        composer require nunopress/pimple-config-service-provider
+    composer require nunopress/pimple-config-service-provider
 
 **********
 Parameters
@@ -21,144 +22,149 @@ Path defined to find every php files inside for loading.
 config.environment (*optional*)
 -------------------------------
 
-Search before in the defined path and then in the environment path (*``config.path/config.environment`` format*). The service use ``array_replace_recursive`` for help the developers to change only what you need in the different environment instead to write again all the configuration set.
+Search before in the defined path and then in the environment path (``config.path/config.environment`` *format*). The service use ``array_replace_recursive`` for help the developers to change only what you need in the different environment instead to write again all the configuration set.
 
 Here a simple example:
 
 .. code-block:: php
 
-    // config/view.php
-    return [
-        'twig' => [
-            'path' => realpath(__DIR__ . '/../views'),
-            'options' => [
-                'debug' => false,
-                'cache' => realpath(__DIR__ . '/../../storage/cache/twig')
-            ]
-        ]
-    ];
+  // config/view.php
+  return [
+      'twig' => [
+          'path' => realpath(__DIR__ . '/../views'),
+          'options' => [
+              'debug' => false,
+              'cache' => realpath(__DIR__ . '/../../storage/cache/twig')
+          ]
+      ]
+  ];
 
-    // config/development/view.php
-    return [
-        'twig' => [
-            'options' => [
-                'debug' => true,
-                'cache' => false
-            ]
-        ]
-    ];
+  // config/development/view.php
+  return [
+      'twig' => [
+          'options' => [
+              'debug' => true,
+              'cache' => false
+          ]
+      ]
+  ];
 
-    // RESULT
-    [
-        'twig' => [
-            'path' => realpath(__DIR__ . '/../views'),
-            'options' => [
-                'debug' => true,
-                'cache' => false
-            ]
-        ]
-    ]
+  // RESULT
+  [
+      'twig' => [
+          'path' => realpath(__DIR__ . '/../views'),
+          'options' => [
+              'debug' => true,
+              'cache' => false
+          ]
+      ]
+  ]
 
 config.merge\_factory (*optional*)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------
 
 You can configure your merge method instead to use the default merge factory ``array_replace_recursive``:
 
 .. code-block:: php
     
-    $app['config.merge_factory'] = $app->share($app->protect('config.merge_factory', function (array $old, array $new) {
-        return array_merge($old, $new);
-    }));
+  $app['config.merge_factory'] = $app->share($app->protect('config.merge_factory', function (array $old, array $new) {
+      return array_merge($old, $new);
+  }));
 
-
+********
 Services
---------
+********
 
 For access to config keys you need to use the ``filename`` (*without extension*) before every config keys, example:
 
 .. code-block:: php
 
-    // config/view.php
-    return [
-        'test' => 'yep'
-    ];
+  // config/view.php
+  return [
+      'test' => 'yep'
+  ];
 
-    // Access to test key
-    $app['config']->get('view.test'); // Result: yep
+  // Access to test key
+  $app['config']->get('view.test'); // Result: yep
 
 config
-^^^^^^
+------
 
 The ``Illuminate\Config\Repository`` instance. The main way to interact with Config.
 
+***********
 Registering
------------
+***********
 
 .. code-block:: php
 
-    $app->register(new NunoPress\Pimple\Config\Provider\ConfigServiceProvider(), [
-        'config.path' => __DIR__ . '/config',
-        'config.environment' => ($app['debug']) ? 'dev' : 'prod'
-    ]);
+  $app->register(new NunoPress\Pimple\Config\Provider\ConfigServiceProvider(), [
+      'config.path' => __DIR__ . '/config',
+      'config.environment' => ($app['debug']) ? 'dev' : 'prod'
+  ]);
 
+*****
 Usage
------
+*****
 
 The Config provider provides a ``config`` service:
 
 .. code-block:: php
 
-    $app->get('/hello', function () use ($app) {
-        $name = $app['config']->get('app.name', 'NunoPress');
+  $app->get('/hello', function () use ($app) {
+      $name = $app['config']->get('app.name', 'NunoPress');
 
-        return 'Hello ' . $name . '!!';
-    });
+      return 'Hello ' . $name . '!!';
+  });
 
 .. note::
+
     Read the Config `reference <https://laravel.com/api/master/Illuminate/Config/Repository.html>`_ for the Illuminate Config document to learn more about the various Config functions.
 
+******
 Traits
-------
+******
 
 ``NunoPress\Pimple\Config\Application\ConfigTrait`` adds the following shortcuts:
 
 config
-^^^^^^
+------
 
 Access to Config object for retrieve the ``key`` requested, for the second param you can define a default value.
 
 .. code-block:: php
 
-    $name = $app->config('app.name', 'NunoPress');
+  $name = $app->config('app.name', 'NunoPress');
 
 Define this trait in your ``Application`` class:
 
 .. code-block:: php
 
-    class App extends \Silex\Application
-    {
-        use \NunoPress\Pimple\Config\Application\ConfigTrait;
-    }
+  class App extends \Silex\Application
+  {
+      use \NunoPress\Pimple\Config\Application\ConfigTrait;
+  }
 
-    $app = new App();
+  $app = new App();
 
-    $name = $app->config('app.name', 'NunoPress');
+  $name = $app->config('app.name', 'NunoPress');
 
+*************
 Customization
--------------
+*************
 
 You can configure the Config object before using it by extending the ``config`` service:
 
 .. code-block:: php
 
-    $app['config'] = $app->share($app->extend('config', function ($config, $app) {
-        // Instead to have separate the config items you can share it in the current container
-        $items = $config->all();
+  $app['config'] = $app->share($app->extend('config', function ($config, $app) {
+      // Instead to have separate the config items you can share it in the current container
+      $items = $config->all();
 
-        foreach ($items as $name => $item) {
-            $app[$name] = $item;
-        }
+      foreach ($items as $name => $item) {
+          $app[$name] = $item;
+      }
 
-        return $config;
-    }));
+      return $config;
+  }));
 
