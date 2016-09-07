@@ -140,6 +140,7 @@ Define this trait in your ``Application`` class:
 
 .. code-block:: php
 
+  <?php
   class App extends \Silex\Application
   {
       use \NunoPress\Pimple\Config\Application\ConfigTrait;
