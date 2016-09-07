@@ -3,8 +3,9 @@ site_description: Pimple Config Service Provider based on Illuminate Config pack
 site_author: http://nunopress.com
 
 theme: readthedocs
+docs_dir: docs
 
-repo_url: https://github.com/nunopress/pimple-config-service-provider/tree/master/docs
+repo_url: https://github.com/nunopress/pimple-config-service-provider/
 
 copyright: Copyright &copy; 2010-2016 <a href="http://nunopress.com">NunoPress LLC</a> - License MIT
 
