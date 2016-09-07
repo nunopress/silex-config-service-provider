@@ -4,7 +4,7 @@ Pimple Config Service Provider
 Pimple Config Service Provider based on `Illuminate Config <https://github.com/illuminate/config>`_ package for `Silex Microframework <http://silex.sensiolabs.org/>`_ or any `Pimple Container <http://pimple.sensiolabs.org/>`_ project's.
 
 .. tip::
-    The Service Provider is installable with [Composer](https://getcomposer.org/):
+    The Service Provider is installable with [Composer](https://getcomposer.org/)::
         
         composer require nunopress/pimple-config-service-provider
 
@@ -23,7 +23,7 @@ Search before in the defined path and then in the environment path (*``config.pa
 
 Here a simple example:
 
-.. code:: php
+.. code-block:: php
 
     // config/view.php
     return [
@@ -62,7 +62,7 @@ config.merge\_factory (*optional*)
 
 You can configure your merge method instead to use the default merge factory ``array_replace_recursive``:
 
-.. code:: php
+.. code-block:: php
     
     $app['config.merge_factory'] = $app->share($app->protect('config.merge_factory', function (array $old, array $new) {
         return array_merge($old, $new);
@@ -74,7 +74,7 @@ Services
 
 For access to config keys you need to use the ``filename`` (*without extension*) before every config keys, example:
 
-.. code:: php
+.. code-block:: php
 
     // config/view.php
     return [
@@ -92,7 +92,7 @@ The ``Illuminate\Config\Repository`` instance. The main way to interact with Con
 Registering
 -----------
 
-.. code:: php
+.. code-block:: php
 
     $app->register(new NunoPress\Pimple\Config\Provider\ConfigServiceProvider(), [
         'config.path' => __DIR__ . '/config',
@@ -104,7 +104,7 @@ Usage
 
 The Config provider provides a ``config`` service:
 
-.. code:: php
+.. code-block:: php
 
     $app->get('/hello', function () use ($app) {
         $name = $app['config']->get('app.name', 'NunoPress');
@@ -125,13 +125,13 @@ config
 
 Access to Config object for retrieve the ``key`` requested, for the second param you can define a default value.
 
-.. code:: php
+.. code-block:: php
 
     $name = $app->config('app.name', 'NunoPress');
 
 Define this trait in your ``Application`` class:
 
-.. code:: php
+.. code-block:: php
 
     class App extends \Silex\Application
     {
@@ -147,7 +147,7 @@ Customization
 
 You can configure the Config object before using it by extending the ``config`` service:
 
-.. code:: php
+.. code-block:: php
 
     $app['config'] = $app->share($app->extend('config', function ($config, $app) {
         // Instead to have separate the config items you can share it in the current container
