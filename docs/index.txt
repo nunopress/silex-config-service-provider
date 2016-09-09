@@ -190,3 +190,12 @@ You can configure the Config object before using it by extending the ``config`` 
       return $config;
   }));
 
+*****************
+Table of contents
+*****************
+
+.. toctree::
+  maxdepth: 2
+  
+  #
+  #parameters
