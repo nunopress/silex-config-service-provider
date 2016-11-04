@@ -2,6 +2,8 @@
 
 namespace NunoPress\Silex\Config\Application;
 
+use Illuminate\Config\Repository;
+
 /**
  * Class ConfigTrait
  *
@@ -19,13 +21,16 @@ trait ConfigTrait
      */
     public function config($key, $default = null)
     {
+        /** @var Repository $config */
+        $config = $this['config'];
+
         // Add ability to save data inside of the config service
         if (true === is_array($key)) {
-            $this['config']->set($key);
+            $config->set($key);
 
             return true;
         } else {
-            return $this['config']->get($key, $default);
+            return $config->get($key, $default);
         }
     }
 }
