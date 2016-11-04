@@ -1,6 +1,6 @@
 <?php
 
-namespace NunoPress\Pimple\Config\Provider;
+namespace NunoPress\Silex\Config\Provider;
 
 use Illuminate\Config\Repository;
 use Pimple\Container;
@@ -9,7 +9,8 @@ use Symfony\Component\Finder\Finder;
 
 /**
  * Class ConfigServiceProvider
- * @package NunoPress\Pimple\Config\Provider
+ *
+ * @package NunoPress\Silex\Config\Provider
  */
 class ConfigServiceProvider implements ServiceProviderInterface
 {
@@ -34,7 +35,9 @@ class ConfigServiceProvider implements ServiceProviderInterface
 
     /**
      * @param Container $app
+     *
      * @return array
+     *
      * @throws \Exception
      */
     protected function loadConfigurationFiles(Container $app)
@@ -59,6 +62,7 @@ class ConfigServiceProvider implements ServiceProviderInterface
     /**
      * @param string $path
      * @param null|string $environment
+     *
      * @return array
      */
     protected function getConfigurationFiles($path, $environment = null)

@@ -1,20 +1,31 @@
 <?php
 
-namespace NunoPress\Pimple\Config\Application;
+namespace NunoPress\Silex\Config\Application;
 
 /**
  * Class ConfigTrait
- * @package NunoPress\Pimple\Config\Application
+ *
+ * @package NunoPress\Silex\Config\Application
  */
 trait ConfigTrait
 {
     /**
-     * @param string $key
+     * @see https://github.com/laravel/framework/blob/master/src/Illuminate/Config/Repository.php
+     *
+     * @param string|array $key
      * @param mixed $default
-     * @return mixed
+     *
+     * @return mixed|bool
      */
     public function config($key, $default = null)
     {
-        return $this['config']->get($key, $default);
+        // Add ability to save data inside of the config service
+        if (true === is_array($key)) {
+            $this['config']->set($key);
+
+            return true;
+        } else {
+            return $this['config']->get($key, $default);
+        }
     }
 }
